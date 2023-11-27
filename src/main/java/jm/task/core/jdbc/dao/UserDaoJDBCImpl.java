@@ -10,7 +10,6 @@ import java.sql.*;
 public class UserDaoJDBCImpl implements UserDao {
     private static final Connection conn = Util.getInstance().getConnection();
     public UserDaoJDBCImpl() {
-
     }
 
     public void createUsersTable() {
@@ -52,7 +51,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-
         try (ResultSet resultSet = conn.createStatement().executeQuery("SELECT * FROM users")) {
             while(resultSet.next()) {
                 User user = new User(resultSet.getString("name"),
@@ -63,7 +61,6 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return users;
     }
 
